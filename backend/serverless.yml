@@ -1,5 +1,4 @@
-app: alpha
-service: alpha
+service: backend
 
 frameworkVersion: "2 || 3"
 
@@ -10,12 +9,15 @@ custom:
 provider:
   name: aws
   runtime: python3.8
-  lambdaHashingVersion: "20201221"
   region: us-east-1
+  stage: dev
+  environment:
+    COGNITO_USER_POOL: ${self:provider.stage}-user-pool
+    COGNITO_USER_POOL_CLIENT: ${self:provider.stage}-user-pool-client
 
 functions:
   home:
-    handler: ./app.handler
+    handler: wsgi_handler.handler
     events:
       - http:
           path: /
@@ -28,3 +30,23 @@ functions:
 plugins:
   - serverless-wsgi
   - serverless-python-requirements
+
+resources:
+  Resources:
+    CognitoUserPool:
+      Type: AWS::Cognito::UserPool
+      Properties:
+        UserPoolName: ${self:provider.stage}-user-pool
+        UsernameAttributes:
+          - email
+        AutoVerifiedAttributes:
+          - email
+    CognitoUserPoolClient:
+      Type: AWS::Cognito::UserPoolClient
+      Properties:
+        ClientName: ${self:provider.stage}-user-pool-client
+        UserPoolId:
+          Ref: CognitoUserPool
+        ExplicitAuthFlows:
+          - USER_PASSWORD_AUTH
+        GenerateSecret: false
