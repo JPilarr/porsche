@@ -1,0 +1,16 @@
+component: website
+name: frontend
+
+inputs:
+  src:
+    src: ./
+    hook: npm run build
+    dist: build
+  # Enable this when you want to set a custom domain.
+  # domain: ${env:domain}
+
+package:
+  exclude:
+    - node_modules/**
+    - frontend/**
+    - package-lock.json
