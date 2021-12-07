@@ -15,7 +15,7 @@ import fontSizes from "./fontSizes";
 
 const styles = {
   global: {
-    body: { color: "fonts.black", fontSize: "15px" },
+    body: { color: "font.black", fontSize: "15px" },
   },
 };
 

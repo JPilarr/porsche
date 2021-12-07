@@ -1,14 +1,9 @@
 const Button = {
   baseStyle: {
-    borderRadius: "6px",
-    fontWeight: "500",
+    borderRadius: "30px",
+    fontWeight: "bold",
+    fontSize: "16px",
 
-    _hover: {
-      _disabled: {
-        backgroundColor: "#BEC3CD",
-        color: "#fff",
-      },
-    },
     _focus: {
       boxShadow: "none",
       outline: "none",
@@ -17,48 +12,36 @@ const Button = {
       boxShadow: "none",
       outline: "none",
     },
-    _disabled: {
-      opacity: "0.6",
-      color: "#fff",
-      backgroundColor: "#BEC3CD",
+  },
 
+  variants: {
+    outline: {
+      backgroundColor: "white",
+      borderColor: "brand.secondary",
+      color: "brand.secondary",
       _hover: {
-        backgroundColor: "#BEC3CD",
-        color: "#fff",
+        color: "white",
+        backgroundColor: "brand.secondary",
+      },
+      _disabled: {
+        backgroundColor: "white",
+        color: "border.gray",
+        borderColor: "border.gray",
       },
     },
   },
 
   sizes: {
     md: {
-      h: "46px",
+      h: "52px",
       minW: "120px",
       px: "40px",
-      py: "12px",
-    },
-    sm: {
-      h: "40px",
-      minW: "120px",
-      px: "20px",
       py: "10px",
-      fontSize: "15px",
-    },
-    xs: {
-      h: "40px",
-      minW: "40px",
-      px: "20px",
-      py: "10px",
-      fontSize: "15px",
-    },
-    xxs: {
-      h: "40px",
-      minW: "40px",
-      px: "0",
-      py: "0",
     },
   },
   defaultProps: {
     size: "md",
+    color: "blue",
   },
 };
 

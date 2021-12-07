@@ -26,9 +26,8 @@ export const NavBar = () => {
           <Button
             as={Link}
             to="/login"
-            variant="outline"
             data-cypress="header-login-button"
-            size="xs"
+            colorScheme="blue"
           >
             Login
           </Button>
@@ -39,7 +38,7 @@ export const NavBar = () => {
             as={Link}
             to="/sign-up"
             data-cypress="header-sign-up-button"
-            size="xs"
+            colorScheme="blue"
           >
             Sign Up
           </Button>
@@ -59,7 +58,6 @@ export const NavBar = () => {
                     to="/login"
                     variant="outline"
                     data-cypress="header-login-button-mobile"
-                    size="xs"
                   >
                     Login
                   </Button>
@@ -71,7 +69,6 @@ export const NavBar = () => {
                     as={Link}
                     to="/sign-up"
                     data-cypress="header-sign-up-button-mobile"
-                    size="xs"
                   >
                     Sign Up
                   </Button>

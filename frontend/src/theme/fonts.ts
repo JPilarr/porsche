@@ -1,3 +1,3 @@
-const fonts = { mono: "Roboto", heading: "Poppins", body: "Roboto" };
+const fonts = { mono: "Poppins", heading: "Poppins", body: "Poppins" };
 
 export default fonts;
