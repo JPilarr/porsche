@@ -31,6 +31,9 @@ const colors = {
   font: {
     black: "#42403D",
     gray: "#ACB5BD",
+    lightGray: "#868686",
+    gray3: "#CACACA",
+
     title: "#212429",
   },
   border: {

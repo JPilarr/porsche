@@ -16,7 +16,7 @@ const Layout = ({ children }: any) => {
                 <NavBar />
               </Box>
             </Box>
-            <Box as="main" flex="1" h="full" bg="#F1F6FE" pt={8}>
+            <Box as="main" flex="1" h="full" bg="#F1F6FE" pt={16}>
               {children}
             </Box>
           </Flex>
