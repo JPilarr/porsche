@@ -3,6 +3,7 @@ import {
   Button,
   Flex,
   HStack,
+  Icon,
   Menu,
   MenuButton,
   MenuGroup,
@@ -11,12 +12,18 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
+import { ReactComponent as IconLogo } from "static/icons/logo.svg";
 
 export const NavBar = () => {
   const location = useLocation();
+
   return (
     <Flex alignItems="center" fontWeight="bold" px={2}>
-      <Link to="/">Logo</Link>
+      <Link to="/">
+        <Flex alignItems="center">
+          <Icon as={IconLogo} w="120px" h="46px" />
+        </Flex>
+      </Link>
       <Spacer />
       <HStack
         spacing={{ base: 2, md: 4 }}

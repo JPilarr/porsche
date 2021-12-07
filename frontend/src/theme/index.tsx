@@ -10,18 +10,20 @@ import NumberInput from "./components/numberInput";
 import Radio from "./components/radio";
 import Select from "./components/select";
 import Text from "./components/text";
+import FormLabel from "./components/formLabel";
 import fonts from "./fonts";
 import fontSizes from "./fontSizes";
 
 const styles = {
   global: {
-    body: { color: "font.black", fontSize: "15px" },
+    body: { color: "font.black", fontSize: "16px" },
   },
 };
 
 const components = {
   Button,
   Heading,
+  FormLabel,
   Checkbox,
   Input,
   NumberInput,
