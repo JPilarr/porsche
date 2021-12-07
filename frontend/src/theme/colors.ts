@@ -1,35 +1,40 @@
 const colors = {
-  black: "#1A1B1C",
+  brand: {
+    primary: "#3083FF",
+    secondary: "#2B44FF",
+  },
+  blue: {
+    50: "#f6faff",
+    100: "#e3efff",
+    200: "#cee2ff",
+    300: "#b7d5ff",
+    400: "#9ec6ff",
+    500: "#3083FF",
+    600: "#06439E",
+    700: "#3186ff",
+    800: "#266aca",
+    900: "#163e77",
+    disabled: "",
+  },
+
+  black: { brand: "#000000", hover: "#444444", disabled: "#DEDEDE" },
+
   white: "#FFFFFF",
   red: {
     error: "#FF0000",
   },
   background: {
-    light: "#FCFCFD",
-    dark: "#1A202C",
-    gray: "#EEF0F3",
-    red: "#F7E7E7",
-    orange: "#FEF3EA",
-    green: "#EAF6F2",
-  },
-  custom: {
-    gray: "#6B6868",
-    grayBlue: "#708B99",
-    redTitle: "#811208",
-    orange: "#FF842C",
-    blue: "#162065",
+    light: "#FFFFFF",
+    blue: "#F1F7FF",
   },
   success: "#35D692",
-  green: { custom: "#37BD85" },
-  fonts: {
-    black: "#334057",
-    title: "#1B202B",
-    gray: "#9AA1AD",
-    green: "#27845D",
+  font: {
+    black: "#42403D",
+    gray: "#ACB5BD",
+    title: "#212429",
   },
   border: {
-    gray: "#DEE0E5",
-    lightGray: "#EEF0F3",
+    gray: "#DEDEDE",
   },
 };
 

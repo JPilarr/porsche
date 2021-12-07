@@ -3,24 +3,24 @@ const Heading = {
 
   sizes: {
     xl: {
-      fontSize: "34px",
-      lineHeight: "44px",
+      fontSize: "48px",
+      lineHeight: "72px",
     },
     lg: {
-      fontSize: "24px",
-      lineHeight: "32px",
+      fontSize: "38px",
+      lineHeight: "57px",
     },
     md: {
-      fontSize: "22px",
-      lineHeight: "30px",
+      fontSize: "28px",
+      lineHeight: "42px",
     },
     sm: {
       fontSize: "18px",
-      lineHeight: "26px",
+      lineHeight: "27px",
     },
     xs: {
-      fontSize: "15px",
-      lineHeight: "1.2",
+      fontSize: "12px",
+      lineHeight: "18px",
     },
   },
 };
