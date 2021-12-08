@@ -26,6 +26,7 @@ const colors = {
   background: {
     light: "#FFFFFF",
     blue: "#F1F7FF",
+    gray: "#EFEFEF",
   },
   success: "#35D692",
   font: {
