@@ -1,10 +1,5 @@
-import { Button } from "@chakra-ui/button";
-import Layout from "components/Layout";
+import { AppLayout } from "components/AppLayout";
 
 export const HomePage = () => {
-  return (
-    <Layout>
-      Homepage <Button variant="outline">test</Button>
-    </Layout>
-  );
+  return <AppLayout>Dashboard</AppLayout>;
 };
