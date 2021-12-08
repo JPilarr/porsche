@@ -3,8 +3,8 @@ const Input = {
   variants: {
     brand: {
       field: {
-        height: "46px",
-        minHeight: "46px",
+        height: "50px",
+        minHeight: "50px",
         backgroundColor: "white",
         border: "1px solid",
         borderColor: "border.gray",
@@ -23,10 +23,13 @@ const Input = {
         _invalid: {
           borderColor: "red.error",
         },
+        _placeholder: {
+          fontSize: "14px",
+        },
       },
       addon: {
-        height: "46px",
-        minHeight: "46px",
+        height: "50px",
+        minHeight: "50px",
         backgroundColor: "background.gray",
         border: "1px solid",
         borderColor: "border.gray",
