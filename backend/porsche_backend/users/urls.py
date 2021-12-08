@@ -1,14 +1,12 @@
 from django.urls import path
 
-from porsche_backend.users.views import (
-    user_detail_view,
-    user_redirect_view,
-    user_update_view,
-)
+from porsche_backend.users.api.views import (UserCreate)
+from rest_framework.authtoken.views import obtain_auth_token
 
 app_name = "users"
 urlpatterns = [
-    path("~redirect/", view=user_redirect_view, name="redirect"),
-    path("~update/", view=user_update_view, name="update"),
-    path("<str:username>/", view=user_detail_view, name="detail"),
+    # path("<str:username>/", view=user_detail_view, name="detail"),
+    path("signup/", UserCreate.as_view(), name="sign-up"),
+    path("login/", obtain_auth_token, name="login"),
+
 ]
