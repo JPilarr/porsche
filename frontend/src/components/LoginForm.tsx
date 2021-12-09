@@ -4,11 +4,16 @@ import {
   FormErrorMessage,
   FormLabel,
   Input,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
 import { LogInFormInput } from "interfaces";
 import { useForm } from "react-hook-form";
+import { useMutation } from "react-query";
 import { CredentialsForm } from "./CredentialsForm";
+import axios, { AxiosError } from "axios";
+import { useAuth } from "utils/auth";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
   const {
@@ -17,8 +22,35 @@ export const LoginForm = () => {
     register,
   } = useForm();
 
+  const auth = useAuth();
+  const toast = useToast();
+  const navigate = useNavigate();
+
+  const mutation = useMutation(
+    (data: LogInFormInput) =>
+      axios.post(`${process.env.REACT_APP_API}/users/login/`, data),
+    {
+      onError: (error: AxiosError) => {
+        const errorMessage =
+          error?.response?.data?.["non_field_errors"] ?? error.message;
+        toast({
+          title: "Login Error",
+          description: errorMessage,
+          status: "error",
+          position: "top",
+          duration: 9000,
+          isClosable: true,
+        });
+      },
+      onSuccess: (data) => {
+        auth.signin({ token: data.data.token as string, user: null });
+        navigate("/");
+      },
+    }
+  );
+
   const handleLogIn = (data: LogInFormInput) => {
-    console.log({ data });
+    mutation.mutate(data);
   };
 
   return (
@@ -59,7 +91,7 @@ export const LoginForm = () => {
           </FormErrorMessage>
         </FormControl>
 
-        <Button w="100%" mt={4} colorScheme="blue">
+        <Button w="100%" mt={4} colorScheme="blue" type="submit">
           Login
         </Button>
       </VStack>
