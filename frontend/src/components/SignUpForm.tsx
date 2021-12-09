@@ -11,6 +11,7 @@ import {
   InputGroup,
   InputRightElement,
   Text,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
 import axios from "axios";
@@ -30,13 +31,20 @@ export const SignUpForm = () => {
 
   const [show, setShow] = useState(false);
   const handlePasswordIconClick = () => setShow(!show);
+  const toast = useToast();
 
   const mutation = useMutation(
     (data: SignUpFormInput) =>
       axios.post(`${process.env.REACT_APP_API}/users/signup/`, data),
     {
-      onSuccess: (data) => {
-        console.log({ data }, "final");
+      onSuccess: () => {
+        toast({
+          title: "Account was successfully created",
+          status: "success",
+          position: "top",
+          duration: 9000,
+          isClosable: true,
+        });
       },
     }
   );
@@ -44,8 +52,6 @@ export const SignUpForm = () => {
   const [step, setStep] = useState(0);
 
   const handleSignUp = (data: SignUpFormInput) => {
-    console.log({ data });
-
     mutation.mutate(data);
   };
 
@@ -101,7 +107,7 @@ export const SignUpForm = () => {
               id="country"
               maxLength={50}
               placeholder="Country"
-              autocomplete="country1"
+              autocomplete="off"
               {...register("country", {
                 required: "country is required.",
                 maxLength: 50,
@@ -139,11 +145,11 @@ export const SignUpForm = () => {
               {errors.name?.message}
             </FormErrorMessage>
           </FormControl>
-          <FormControl isInvalid={errors.email}>
+          <FormControl isInvalid={errors.username}>
             <FormLabel>Email</FormLabel>
             <Input
-              id="email"
-              {...register("email", {
+              id="username"
+              {...register("username", {
                 required: "Your email is required.",
                 pattern: {
                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -154,7 +160,7 @@ export const SignUpForm = () => {
               placeholder="Your email"
             />
             <FormErrorMessage textColor="red.error">
-              {errors.email?.message}
+              {errors.username?.message}
             </FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={errors.password}>

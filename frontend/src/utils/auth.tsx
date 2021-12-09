@@ -1,18 +1,15 @@
+import { TokenType, UserProfile, UserState } from "interfaces";
 import {
   createContext,
+  FC,
+  ReactNode,
   useCallback,
   useContext,
   useMemo,
   useState,
 } from "react";
 
-const LOCAL_STORAGE_AUTH_KEY = "premas-auth";
-
-type UserType = any;
-
-type TokenType = string | null;
-
-type StateType = any;
+const LOCAL_STORAGE_AUTH_KEY = "daato-auth";
 
 const initialState = {
   token: null,
@@ -32,8 +29,8 @@ export function useAuth() {
   return useContext(AuthContext);
 }
 
-export function AuthProvider({ children }: any) {
-  const [state, setState] = usePersistedAuth(initialState);
+export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
+  const { state, setState } = usePersistedAuth(initialState);
 
   const contextValue = useMemo(() => {
     const { token, user } = state;
@@ -43,7 +40,7 @@ export function AuthProvider({ children }: any) {
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
-}
+};
 
 function createContextValue({
   token,
@@ -51,30 +48,35 @@ function createContextValue({
   setState,
 }: {
   token: TokenType;
-  user: UserType;
-  setState: ({ token, user }: { token: TokenType; user: UserType }) => void;
+  user: UserProfile | null;
+  setState: ({
+    token,
+    user,
+  }: {
+    token: TokenType | null;
+    user: UserProfile | null;
+  }) => void;
 }) {
   return {
     token,
     user,
-    signin: ({ token, user }: { token: TokenType; user: UserType }) =>
+    signin: ({ token, user }: { token: TokenType; user: UserProfile | null }) =>
       setState({ token, user }),
     signout: () => setState({ token: null, user: null }),
   };
 }
 
-function usePersistedAuth(defaultState: StateType) {
+function usePersistedAuth(defaultState: UserState) {
   const [state, setStateRaw] = useState(() => getStorageState(defaultState));
-
-  const setState = useCallback((newState) => {
+  const setState = useCallback((newState: UserState) => {
     setStateRaw(newState);
     setStorageState(newState);
   }, []);
 
-  return [state, setState];
+  return { state, setState };
 }
 
-function getStorageState(defaultState: StateType) {
+function getStorageState(defaultState: UserState) {
   if (!window.localStorage) {
     return defaultState;
   }
@@ -87,7 +89,7 @@ function getStorageState(defaultState: StateType) {
   try {
     const { user, token } = JSON.parse(rawData);
 
-    if (token && user && user.email && user.firstName) {
+    if (token && user && user.username) {
       return { token, user };
     }
   } catch {}
@@ -95,7 +97,7 @@ function getStorageState(defaultState: StateType) {
   return defaultState;
 }
 
-function setStorageState(newState: StateType) {
+function setStorageState(newState: UserState) {
   if (!window.localStorage) {
     return;
   }

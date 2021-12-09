@@ -22,6 +22,7 @@ import { ReactComponent as IconHome } from "static/icons/home.svg";
 import { ReactComponent as IconForm } from "static/icons/form.svg";
 import { ReactComponent as IconLogo } from "static/icons/logo.svg";
 import { ReactComponent as IconLogOut } from "static/icons/logout.svg";
+import { useAuth } from "utils/auth";
 
 const NavigationLink: React.FC<{
   icon: React.ReactElement;
@@ -135,11 +136,11 @@ export const LeftNavbar = () => {
   } = useDisclosure();
   const btnRef = useRef<HTMLButtonElement>(null);
   const navigate = useNavigate();
+  const { signout } = useAuth();
 
   async function handleSignOut() {
     try {
-      // TODO: Logout
-      console.log("Logout");
+      signout();
       navigate("/login");
     } catch (error) {
       console.log("Sign out error:", error);
