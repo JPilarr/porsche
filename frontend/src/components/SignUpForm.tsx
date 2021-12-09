@@ -1,20 +1,24 @@
 import {
   Box,
   Button,
+  Center,
   Divider,
   FormControl,
   FormErrorMessage,
   FormLabel,
   HStack,
   Input,
+  InputGroup,
+  InputRightElement,
   Text,
   VStack,
-  Center,
 } from "@chakra-ui/react";
+import axios from "axios";
 import { CredentialsForm } from "components/CredentialsForm";
 import { SignUpFormInput } from "interfaces";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useMutation } from "react-query";
 
 export const SignUpForm = () => {
   const {
@@ -24,10 +28,25 @@ export const SignUpForm = () => {
     watch,
   } = useForm();
 
+  const [show, setShow] = useState(false);
+  const handlePasswordIconClick = () => setShow(!show);
+
+  const mutation = useMutation(
+    (data: SignUpFormInput) =>
+      axios.post(`${process.env.REACT_APP_API}/users/signup/`, data),
+    {
+      onSuccess: (data) => {
+        console.log({ data }, "final");
+      },
+    }
+  );
+
   const [step, setStep] = useState(0);
 
   const handleSignUp = (data: SignUpFormInput) => {
     console.log({ data });
+
+    mutation.mutate(data);
   };
 
   return (
@@ -56,6 +75,7 @@ export const SignUpForm = () => {
               })}
               maxLength={50}
               placeholder="Name of company"
+              autocomplete="company"
             />
             <FormErrorMessage textColor="red.error">
               {errors.company?.message}
@@ -81,6 +101,7 @@ export const SignUpForm = () => {
               id="country"
               maxLength={50}
               placeholder="Country"
+              autocomplete="country1"
               {...register("country", {
                 required: "country is required.",
                 maxLength: 50,
@@ -129,10 +150,35 @@ export const SignUpForm = () => {
                   message: "invalid email address",
                 },
               })}
+              autocomplete="email"
               placeholder="Your email"
             />
             <FormErrorMessage textColor="red.error">
               {errors.email?.message}
+            </FormErrorMessage>
+          </FormControl>
+          <FormControl isInvalid={errors.password}>
+            <FormLabel>Password</FormLabel>
+            <InputGroup>
+              <Input
+                id="password"
+                {...register("password", {
+                  required: "Password is required.",
+                  minLength: 6,
+                })}
+                type={show ? "text" : "password"}
+                placeholder="Your password"
+              />
+              <InputRightElement
+                onClick={handlePasswordIconClick}
+                pr={2}
+                cursor="pointer"
+              >
+                {show ? "Hide" : "Show"}
+              </InputRightElement>
+            </InputGroup>
+            <FormErrorMessage textColor="red.error">
+              {errors.password?.message}
             </FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={errors.phone_number}>
@@ -147,6 +193,7 @@ export const SignUpForm = () => {
                   message: "invalid phone number",
                 },
               })}
+              autocomplete="tel"
               placeholder="Your Phone number"
             />
             <FormErrorMessage textColor="red.error">
