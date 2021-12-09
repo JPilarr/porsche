@@ -7,20 +7,20 @@ const Heading = {
       lineHeight: "72px",
     },
     lg: {
-      fontSize: "38px",
-      lineHeight: "57px",
+      fontSize: "32px",
+      lineHeight: "48px",
     },
     md: {
       fontSize: "28px",
       lineHeight: "42px",
     },
     sm: {
-      fontSize: "18px",
-      lineHeight: "27px",
+      fontSize: "20px",
+      lineHeight: "30px",
     },
     xs: {
-      fontSize: "12px",
-      lineHeight: "18px",
+      fontSize: "18px",
+      lineHeight: "27px",
     },
   },
 };
