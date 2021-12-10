@@ -307,3 +307,5 @@ porsche_backend/media/
 
 !.envs/.local/
 
+backend/docs/_build/html/.doctrees/environment.pickle
+

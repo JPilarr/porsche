@@ -1,8 +1,13 @@
+import { Heading } from "@chakra-ui/react";
 import { AppLayout } from "components/AppLayout";
-import { useAuth } from "utils/auth";
+import { FormComponentsExample } from "components/FormComponentsExample";
 
 export const HomePage = () => {
-  const { user } = useAuth();
+  return (
+    <AppLayout>
+      <Heading as="h1">Dashboard</Heading>
 
-  return <AppLayout>Dashboard</AppLayout>;
+      <FormComponentsExample />
+    </AppLayout>
+  );
 };

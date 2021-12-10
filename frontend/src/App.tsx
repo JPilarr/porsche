@@ -9,7 +9,6 @@ import { LoginPage } from "pages/login";
 import { SignUpPage } from "pages/sign-up";
 import { useEffect } from "react";
 import { useQuery } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
 import { Route, Routes } from "react-router-dom";
 import { useAuth } from "utils/auth";
 import theme from "./theme";
@@ -43,7 +42,9 @@ const App = () => {
   );
 
   useEffect(() => {
-    refetch();
+    if (token) {
+      refetch();
+    }
   }, [token]);
 
   return (
@@ -62,7 +63,7 @@ const App = () => {
           </Route>
         </Routes>
       </ChakraProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </>
   );
 };
