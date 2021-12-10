@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Center,
   Drawer,
@@ -136,7 +137,7 @@ export const LeftNavbar = () => {
   } = useDisclosure();
   const btnRef = useRef<HTMLButtonElement>(null);
   const navigate = useNavigate();
-  const { signout } = useAuth();
+  const { signout, user } = useAuth();
 
   async function handleSignOut() {
     try {
@@ -236,7 +237,7 @@ export const LeftNavbar = () => {
         position="sticky"
         top="0"
       >
-        <VStack h="100%" justifyContent="space-between" pb="60px">
+        <VStack h="100%" justifyContent="space-between" pb="40px">
           <Flex direction="column" align="center" justify="center">
             <Center mt="16px" mb="30px" px="10px">
               <Link to="/">
@@ -273,7 +274,9 @@ export const LeftNavbar = () => {
               _hover={{
                 color: "#3083FF",
               }}
+              ml={1}
             />
+            <Avatar name={user?.name} mt={8} size="sm" />
           </Flex>
         </VStack>
       </Box>

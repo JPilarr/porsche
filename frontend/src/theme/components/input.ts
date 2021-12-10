@@ -8,6 +8,7 @@ const Input = {
         backgroundColor: "white",
         border: "1px solid",
         borderColor: "border.gray",
+        borderRadius: "14px",
 
         _disabled: {
           backgroundColor: "background.gray",
@@ -22,9 +23,13 @@ const Input = {
         },
         _invalid: {
           borderColor: "red.error",
+          backgroundColor: "#FCF4F6",
         },
         _placeholder: {
           fontSize: "14px",
+        },
+        _focus: {
+          borderColor: "brand.primary",
         },
       },
       addon: {
