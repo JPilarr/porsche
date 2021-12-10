@@ -1,4 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import { PublicPage } from "components/PublicPage";
+import { RequireAuth } from "components/RequireAuth";
 import { useRequest } from "hooks/useRequest";
 import { HomePage } from "pages";
 import { InquiriesPage } from "pages/inquiries";
@@ -48,11 +50,16 @@ const App = () => {
     <>
       <ChakraProvider theme={theme}>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/invite" element={<InvitePage />} />
-          <Route path="/inquiries" element={<InquiriesPage />} />
-          <Route path="/sign-up" element={<SignUpPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route element={<RequireAuth />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/invite" element={<InvitePage />} />
+            <Route path="/inquiries" element={<InquiriesPage />} />
+          </Route>
+
+          <Route element={<PublicPage />}>
+            <Route path="/sign-up" element={<SignUpPage />} />
+            <Route path="/login" element={<LoginPage />} />
+          </Route>
         </Routes>
       </ChakraProvider>
       <ReactQueryDevtools initialIsOpen={false} />
