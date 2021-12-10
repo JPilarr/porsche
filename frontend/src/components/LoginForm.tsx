@@ -13,7 +13,6 @@ import { useMutation } from "react-query";
 import { CredentialsForm } from "./CredentialsForm";
 import axios, { AxiosError } from "axios";
 import { useAuth } from "utils/auth";
-import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
   const {
@@ -24,9 +23,8 @@ export const LoginForm = () => {
 
   const auth = useAuth();
   const toast = useToast();
-  const navigate = useNavigate();
 
-  const mutation = useMutation(
+  const { mutate, isLoading } = useMutation(
     (data: LogInFormInput) =>
       axios.post(`${process.env.REACT_APP_API}/users/login/`, data),
     {
@@ -42,15 +40,14 @@ export const LoginForm = () => {
           isClosable: true,
         });
       },
-      onSuccess: (data) => {
+      onSuccess: async (data) => {
         auth.signin({ token: data.data.token as string, user: null });
-        navigate("/");
       },
     }
   );
 
   const handleLogIn = (data: LogInFormInput) => {
-    mutation.mutate(data);
+    mutate(data);
   };
 
   return (
@@ -91,7 +88,13 @@ export const LoginForm = () => {
           </FormErrorMessage>
         </FormControl>
 
-        <Button w="100%" mt={4} colorScheme="blue" type="submit">
+        <Button
+          w="100%"
+          mt={4}
+          colorScheme="blue"
+          type="submit"
+          isLoading={isLoading}
+        >
           Login
         </Button>
       </VStack>

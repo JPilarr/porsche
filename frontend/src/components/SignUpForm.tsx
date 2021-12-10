@@ -20,6 +20,7 @@ import { SignUpFormInput } from "interfaces";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
+import { useNavigate } from "react-router-dom";
 
 export const SignUpForm = () => {
   const {
@@ -32,8 +33,9 @@ export const SignUpForm = () => {
   const [show, setShow] = useState(false);
   const handlePasswordIconClick = () => setShow(!show);
   const toast = useToast();
+  const navigate = useNavigate();
 
-  const mutation = useMutation(
+  const { mutate, isLoading } = useMutation(
     (data: SignUpFormInput) =>
       axios.post(`${process.env.REACT_APP_API}/users/signup/`, data),
     {
@@ -45,6 +47,8 @@ export const SignUpForm = () => {
           duration: 9000,
           isClosable: true,
         });
+
+        navigate("/login");
       },
     }
   );
@@ -52,7 +56,7 @@ export const SignUpForm = () => {
   const [step, setStep] = useState(0);
 
   const handleSignUp = (data: SignUpFormInput) => {
-    mutation.mutate(data);
+    mutate(data);
   };
 
   return (
@@ -219,7 +223,12 @@ export const SignUpForm = () => {
               {errors.job?.message}
             </FormErrorMessage>
           </FormControl>
-          <Button w="100%" colorScheme="blue" type="submit">
+          <Button
+            w="100%"
+            colorScheme="blue"
+            type="submit"
+            isLoading={isLoading}
+          >
             Confirm
           </Button>
         </VStack>
