@@ -1,7 +1,9 @@
 import { extendTheme } from "@chakra-ui/react";
 import colors from "./colors";
+import Accordion from "./components/accordion";
 import Button from "./components/button";
 import Checkbox from "./components/checkbox";
+import FormLabel from "./components/formLabel";
 import Heading from "./components/heading";
 import Input from "./components/input";
 import Link from "./components/link";
@@ -10,7 +12,6 @@ import NumberInput from "./components/numberInput";
 import Radio from "./components/radio";
 import Select from "./components/select";
 import Text from "./components/text";
-import FormLabel from "./components/formLabel";
 import fonts from "./fonts";
 import fontSizes from "./fontSizes";
 
@@ -21,6 +22,7 @@ const styles = {
 };
 
 const components = {
+  Accordion,
   Button,
   Heading,
   FormLabel,

@@ -67,6 +67,7 @@ export const FormComponentsExample = () => {
           <FormControl>
             <FormLabel>Test Label</FormLabel>
             <Dropdown
+              placeholder="test"
               options={[
                 { value: "test", label: "test" },
                 { value: "test 2", label: "test 2" },

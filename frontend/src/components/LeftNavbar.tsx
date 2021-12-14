@@ -94,7 +94,7 @@ const NavigationLinkMobile: React.FC<{
   disabled?: boolean;
   className?: string;
 }> = ({ icon, to, children, onClick, disabled, className }) => {
-  const path = to.match(/account\/?$/) ? to : to.replace(/\/?$/, "/*");
+  const path = to;
   const location = useLocation();
 
   const match = matchPath(path, location.pathname);
@@ -166,7 +166,7 @@ export const LeftNavbar = () => {
         padding="0 20px"
         zIndex="999"
       >
-        <Link to="/account">
+        <Link to="/">
           <Icon as={IconLogo} ml="10px" w="140px" h="full" />
         </Link>
         <IconButton
