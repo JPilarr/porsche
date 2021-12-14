@@ -3,9 +3,11 @@ import { PublicPage } from "components/PublicPage";
 import { RequireAuth } from "components/RequireAuth";
 import { useRequest } from "hooks/useRequest";
 import { HomePage } from "pages";
+import { Co2FormPage } from "pages/co2";
 import { InquiriesPage } from "pages/inquiries";
 import { InvitePage } from "pages/invite";
 import { LoginPage } from "pages/login";
+import { MicaFormPage } from "pages/mica";
 import { SignUpPage } from "pages/sign-up";
 import { useEffect } from "react";
 import { useQuery } from "react-query";
@@ -55,6 +57,8 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/invite" element={<InvitePage />} />
             <Route path="/inquiries" element={<InquiriesPage />} />
+            <Route path="/mica" element={<MicaFormPage />} />
+            <Route path="/co2" element={<Co2FormPage />} />
           </Route>
 
           <Route element={<PublicPage />}>

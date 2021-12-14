@@ -4,6 +4,7 @@ const Radio = {
       minHeight: "28px",
       width: "28px",
       transition: "all .2s ease",
+      backgroundColor: "white",
       _hover: {
         borderColor: "brand.primary",
       },

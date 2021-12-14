@@ -5,12 +5,12 @@ import {
   InputGroup,
   InputRightElement,
 } from "@chakra-ui/react";
-import { useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import Calendar from "react-calendar";
 import { ReactComponent as IconCalendar } from "static/icons/calendar.svg";
 import { format } from "date-fns";
 
-export const DatePicker = () => {
+export const DatePicker: FC<{ placeholder?: string }> = ({ placeholder }) => {
   const [value, onChange] = useState<Date>();
   const [calendarVisible, setCalendarVisible] = useState(false);
   const wrapperRef = useRef(null);
@@ -52,7 +52,7 @@ export const DatePicker = () => {
       <InputGroup>
         <Input
           value={value ? format(value, "dd.MM.yyyy") : undefined}
-          placeholder="Select date"
+          placeholder={placeholder}
           onClick={handleOpenCalendar}
         />
         <InputRightElement onClick={handleIconClick} pr={2} cursor="pointer">

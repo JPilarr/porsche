@@ -27,6 +27,20 @@ export interface UserProfile {
   username: string;
 }
 
+export interface FormSubsection {
+  title: string;
+  questions: FormQuestion[];
+}
+
+export interface FormQuestion {
+  title: string;
+  index: number;
+  field_type: string;
+  extra_fields: string;
+  placeholder: string;
+  helper_text: string;
+}
+
 export type TokenType = string | null;
 
 export interface UserState {
