@@ -1,15 +1,10 @@
-service: frontend
-
+org: siwakotigovind
+app: porsche
+name: frontend
+component: website
 inputs:
   src:
-    src: ./
+    src: ./src
     hook: npm run build
-    dist: build
-  # Enable this when you want to set a custom domain.
-  # domain: ${env:domain}
-
-package:
-  exclude:
-    - node_modules/**
-    - frontend/**
-    - package-lock.json
+    dist: ./build
+  domain: app.daato.io
