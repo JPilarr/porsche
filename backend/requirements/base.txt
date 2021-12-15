@@ -26,3 +26,4 @@ django-cors-headers==3.10.1 # https://github.com/adamchainz/django-cors-headers
 django-filter
 drf-extensions
 dj-rest-auth
+django-ckeditor

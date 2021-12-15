@@ -75,10 +75,13 @@ THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
+    "ckeditor"
 ]
 
 LOCAL_APPS = [
     "porsche_backend.users",
+    "porsche_backend.questions",
+
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
