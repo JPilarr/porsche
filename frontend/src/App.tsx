@@ -4,6 +4,7 @@ import { RequireAuth } from "components/RequireAuth";
 import { useRequest } from "hooks/useRequest";
 import { HomePage } from "pages";
 import { Co2FormPage } from "pages/co2";
+import { InitialPage } from "pages/initial";
 import { InquiriesPage } from "pages/inquiries";
 import { InvitePage } from "pages/invite";
 import { LoginPage } from "pages/login";
@@ -59,6 +60,7 @@ const App = () => {
             <Route path="/inquiries" element={<InquiriesPage />} />
             <Route path="/mica" element={<MicaFormPage />} />
             <Route path="/co2" element={<Co2FormPage />} />
+            <Route path="/initial" element={<InitialPage />} />
           </Route>
 
           <Route element={<PublicPage />}>

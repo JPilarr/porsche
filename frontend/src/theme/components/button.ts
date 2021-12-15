@@ -17,11 +17,11 @@ const Button = {
   variants: {
     outline: {
       backgroundColor: "white",
-      borderColor: "brand.secondary",
-      color: "brand.secondary",
+      borderColor: "brand.primary",
+      color: "brand.primary",
       _hover: {
         color: "white",
-        backgroundColor: "brand.secondary",
+        backgroundColor: "brand.primary",
       },
       _disabled: {
         backgroundColor: "white",
