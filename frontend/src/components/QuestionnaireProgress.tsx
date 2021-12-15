@@ -117,6 +117,7 @@ export const QuestionnaireProgress: FC<{ title: string }> = ({ title }) => {
                               width="16px"
                               height="16px"
                               as={IconListEdit}
+                              color="brand.primary"
                             />
                           )}
                       </HStack>

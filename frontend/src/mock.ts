@@ -1,3 +1,37 @@
+import { UserProfile } from "interfaces";
+
+const user = {
+  company: "test",
+  country: "ss",
+  duns: "33",
+  email: "malec@u.plus",
+  id: 3,
+  job_title: "job",
+  name: "Jaromir Malec",
+  phone_number: "731808443",
+  updated_at: "2021-12-09T17:14:24.936022Z",
+  username: "malec@u.plus",
+} as UserProfile;
+
+export const inquiries = [
+  {
+    title: "Mica initiative",
+    part: "brakes",
+    sentOn: "09.04.2021",
+    dueDate: "05.01.2022",
+    status: "pending",
+    owner: user,
+  },
+  {
+    title: "CO2 footprint",
+    part: "brakes",
+    sentOn: "09.04.2021",
+    dueDate: "05.01.2022",
+    status: "completed",
+    owner: user,
+  },
+];
+
 export const questions = [
   {
     title: "Number question",
