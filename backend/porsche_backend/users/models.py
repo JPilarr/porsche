@@ -13,11 +13,10 @@ class User(AbstractUser):
     company = models.CharField(max_length=100, default = "")
     duns = models.CharField(max_length=100, default = "")
     country = models.CharField(max_length=100, default = "")
-    name = models.CharField(max_length=100, default = "")
     email = models.CharField(max_length=100, default = "")
     phone_number = models.CharField(max_length=100, default = "")
     job  = models.CharField(max_length=100, default = "")
-    company = models.CharField(max_length=100, default = "")
+    # invited = models.ForeignKey(to = "self")
     def get_absolute_url(self):
         """Get url for user's detail view.
 
