@@ -12,6 +12,8 @@ import NumberInput from "./components/numberInput";
 import Radio from "./components/radio";
 import Select from "./components/select";
 import Text from "./components/text";
+import Table from "./components/table";
+import Tag from "./components/tag";
 import fonts from "./fonts";
 import fontSizes from "./fontSizes";
 
@@ -33,6 +35,8 @@ const components = {
   Modal,
   Radio,
   Select,
+  Table,
+  Tag,
   Text,
 };
 
