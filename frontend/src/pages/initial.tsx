@@ -45,7 +45,7 @@ export const InitialPage = () => {
                 related to Mica in your production.
               </Text>
             </HStack>
-            <Link to="/mica">
+            <Link to="/questionnaire">
               <Button colorScheme="blue" ml="40px">
                 Get started
               </Button>

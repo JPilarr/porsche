@@ -20,12 +20,8 @@ export const HomePage = () => {
         </ChakraLink>
       </Box>
       <VStack spacing={4} alignItems="flex-start" mb={8}>
-        <Link to="/mica">
-          <Button colorScheme="blue">Mica Questionnaire</Button>
-        </Link>
-
-        <Link to="/co2">
-          <Button colorScheme="blue">CO2 Questionnaire</Button>
+        <Link to="/questionnaire">
+          <Button colorScheme="blue">Questionnaire</Button>
         </Link>
       </VStack>
     </AppLayout>

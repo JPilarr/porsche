@@ -1,15 +1,16 @@
 import { Box, Button, HStack, Text, VStack } from "@chakra-ui/react";
 import useFormStore from "hooks/useFormStore";
-import { FormSubsection } from "interfaces";
+import { FormSection, FormSubsection } from "interfaces";
 import { sections } from "mock";
 import { FC } from "react";
 import { Subsection } from "./Subsection";
 
 interface SectionProps {
   subsections: FormSubsection[];
+  sections: FormSection[];
 }
 
-export const Section: FC<SectionProps> = ({ subsections }) => {
+export const Section: FC<SectionProps> = ({ subsections, sections }) => {
   const {
     subsectionStep,
     sectionStep,
@@ -17,7 +18,7 @@ export const Section: FC<SectionProps> = ({ subsections }) => {
     decreaseSubsectionStep,
     increaseSectionStep,
   } = useFormStore();
-  const isLastSubsectionStep = subsectionStep + 1 === subsections.length;
+  const isLastSubsectionStep = subsectionStep + 1 === subsections?.length;
   const isLastSectionStep = sectionStep + 1 === sections.length;
 
   return (
@@ -45,7 +46,7 @@ export const Section: FC<SectionProps> = ({ subsections }) => {
         </HStack>
 
         <Subsection
-          title={subsections[subsectionStep].title}
+          title={subsections[subsectionStep].name}
           questions={subsections[subsectionStep].questions}
         />
       </Box>

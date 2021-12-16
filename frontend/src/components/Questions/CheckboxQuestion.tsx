@@ -20,7 +20,9 @@ export const CheckboxQuestion: FC<CheckboxQuestionProps> = ({ question }) => {
       <CheckboxGroup>
         <VStack alignItems="flex-start" spacing={6}>
           {options.map((item) => (
-            <Checkbox value={item}>{item}</Checkbox>
+            <Checkbox value={item} key={item}>
+              {item}
+            </Checkbox>
           ))}
         </VStack>
       </CheckboxGroup>

@@ -28,7 +28,22 @@ export interface UserProfile {
   updated_at: string;
 }
 
+export interface FormSection {
+  id: number;
+  sub_sections: FormSubsection[];
+  name: string;
+  title: string;
+  updated_at: Date;
+  created_at: Date;
+}
+
 export interface FormSubsection {
+  id: number;
+  section: number;
+  status: boolean;
+  updated_at: Date;
+  created_at: Date;
+  name: string;
   title: string;
   questions: FormQuestion[];
 }
@@ -43,12 +58,20 @@ export interface InquiryItem {
 }
 
 export interface FormQuestion {
+  id: number;
   title: string;
   index: number;
   field_type: string;
   extra_fields: string;
-  placeholder: string;
   helper_text: string;
+  placeholder: string;
+  image_required: boolean;
+  updated_at: Date;
+  created_at: Date;
+}
+
+export interface PendingQuestionsResponse {
+  results: FormSection[];
 }
 
 export type TokenType = string | null;
