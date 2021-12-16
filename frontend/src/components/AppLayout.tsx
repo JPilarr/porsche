@@ -16,7 +16,7 @@ export const AppLayout: React.FC<{}> = ({ children }) => {
           maxW="1440px"
           px={{ base: "20px", lg: "55px" }}
           mx="auto"
-          pt={{ base: "80px", md: "65px" }}
+          pt={{ base: "60px", md: "100px" }}
           bgColor="background.light"
           w="100%"
         >

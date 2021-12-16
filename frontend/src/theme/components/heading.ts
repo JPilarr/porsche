@@ -1,5 +1,5 @@
 const Heading = {
-  baseStyle: { color: "fonts.title" },
+  baseStyle: { color: "font.title" },
 
   sizes: {
     xl: {

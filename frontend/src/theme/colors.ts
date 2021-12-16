@@ -35,8 +35,7 @@ const colors = {
     gray: "#ACB5BD",
     lightGray: "#868686",
     gray3: "#CACACA",
-
-    title: "#212429",
+    title: "#000000",
   },
   border: {
     gray: "#DEDEDE",

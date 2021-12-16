@@ -51,7 +51,7 @@ const InquiryTableItem: React.FC<{ inquiry: InquiryItem }> = ({ inquiry }) => {
       </Td>
       <Td>
         <HStack spacing={4}>
-          <Avatar name={inquiry.owner.email} size="sm" />
+          <Avatar name={inquiry.owner.name} size="sm" />
           <Text>{inquiry.owner.email}</Text>
         </HStack>
       </Td>
