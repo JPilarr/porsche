@@ -17,7 +17,11 @@ export const Subsection: FC<SubsectionProps> = ({ title, questions }) => {
       <Divider my={10} />
       <VStack spacing={6}>
         {questions.map((question) => (
-          <Question field_type={question.field_type} question={question} />
+          <Question
+            field_type={question.field_type}
+            question={question}
+            key={question.title}
+          />
         ))}
       </VStack>
     </>

@@ -21,7 +21,9 @@ export const RadioQuestion: FC<RadioQuestionProps> = ({ question }) => {
       <RadioGroup>
         <VStack alignItems="flex-start" spacing={6}>
           {options.map((item) => (
-            <Radio value={item}>{item}</Radio>
+            <Radio value={item} key={item}>
+              {item}
+            </Radio>
           ))}
         </VStack>
       </RadioGroup>
