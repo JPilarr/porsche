@@ -37,25 +37,38 @@ class SubSection(BaseModel):
         return self.name
 
 class Question(BaseModel):
+    QUESTION_TYPES = [
+    ('text', 'Text'),
+    ('number', 'Number'),
+    ('select', 'Select(dropdown)'),
+    ('checkbox', 'Checkbox'),
+    ('radio', 'Radio button'),
+    ('date', 'Date'),
+    ]
     title = models.TextField()
     sub_section = models.ForeignKey(SubSection, on_delete=models.CASCADE)
-    extra_fields = models.TextField()
-    field_type = models.CharField(max_length=255)
+    extra_fields = models.TextField(null= True, blank = True)
+    field_type = models.CharField(max_length=255, choices = QUESTION_TYPES, 
+                default = "text")
     index = models.IntegerField(default = 0)
     image_required = models.BooleanField(default = False)
-    helper_text = RichTextField()
+    helper_text = RichTextField(null = True , blank = True)
     def save(self, *args, **kwargs):
         if not self.index:
-            self.index = SubSection.objects.filter(name = self.sub_section.name).count()+1
+            if SubSection.objects.filter(name = self.sub_section.name).count:
+                self.index = SubSection.objects.filter(name = self.sub_section.name).last().index + 1
+            else:
+                self.index = SubSection.objects.filter(name = self.sub_section.name).count() + 1
         
         super(Question, self).save(*args, **kwargs)
     def __str__(self):
-        return f"{self.sub_section.name}-{self.index}"
+        return f"{self.title}-{self.sub_section.name}"
 
 class Answer(BaseModel):
     title = models.TextField()
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete= models.CASCADE)
     answer_text = models.TextField()
+    attached_file = models.FileField(blank = True, null = True)
     def __str__(self):
         return f"{self.question.sub_section.name}-{self.question.index}"

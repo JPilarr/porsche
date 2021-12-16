@@ -27,3 +27,5 @@ django-filter
 drf-extensions
 dj-rest-auth
 django-ckeditor
+django-storages
+boto3
