@@ -37,23 +37,23 @@ class AnswerSerializer(serializers.ModelSerializer):
 class MultipleQuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
-        fields = "__all__"  
-    
+        fields = "__all__"
+
 
 class MultipleSubSectionSerializer(serializers.ModelSerializer):
     questions = serializers.SerializerMethodField(source = "get_questions")
-    completed = serializers.SerializerMethodField(source = "get_completed")
+    status = serializers.SerializerMethodField(source = "get_status")
     class Meta:
         model = SubSection
-        fields = "__all__"  
+        fields = "__all__"
     def get_questions(self, obj):
         questions = Question.objects.filter(sub_section = obj)
         serializer = MultipleQuestionSerializer(questions, many = True)
         return serializer.data
-    
-    def get_completed(self,obj):
+
+    def get_status(self,obj):
         assigned_question = Question.objects.filter(sub_section = obj).first()
-        user_answers = Answer.objects.filter(question = assigned_question, 
+        user_answers = Answer.objects.filter(question = assigned_question,
                 user = self.context['request'].user)
         if user_answers.count():
             return True
