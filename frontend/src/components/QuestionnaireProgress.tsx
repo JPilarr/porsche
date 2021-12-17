@@ -10,6 +10,7 @@ import {
   Heading,
   HStack,
   Icon,
+  Progress,
   Spinner,
   Text,
   VStack,
@@ -17,13 +18,13 @@ import {
 import { endpoint } from "api";
 import useFormStore from "hooks/useFormStore";
 import { useRequest } from "hooks/useRequest";
-import { FormSection, PendingQuestionsResponse } from "interfaces";
-import { sections } from "mock";
+import { FormSection } from "interfaces";
 import { FC, useEffect, useState } from "react";
-import { QueryClient, useQuery } from "react-query";
+import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import { ReactComponent as IconListItem } from "static/icons/accordion_listItem.svg";
 import { ReactComponent as IconListEdit } from "static/icons/list_edit.svg";
+import { getFormProgress } from "utils/getFormProgress";
 
 export const QuestionnaireProgress: FC<{ title: string }> = ({ title }) => {
   const { subsectionStep, sectionStep, resetForm } = useFormStore();
@@ -43,6 +44,8 @@ export const QuestionnaireProgress: FC<{ title: string }> = ({ title }) => {
   });
 
   const sections: FormSection[] = data?.data?.results || [];
+
+  const progress = getFormProgress(sections, sectionStep, subsectionStep);
 
   if (!isLoading && sections.length === 0) {
     return (
@@ -90,7 +93,15 @@ export const QuestionnaireProgress: FC<{ title: string }> = ({ title }) => {
             >
               data request progress
             </Text>
-            <Divider mt={6} mb={16} />
+            <Divider mt={6} mb={8} />
+            <VStack spacing={2} alignItems="flex-start" mb={8}>
+              <Text>
+                <b>{Math.round(progress * 100) / 100}%</b> completed
+              </Text>
+              <Box w="100%" h="12px">
+                <Progress colorScheme="blue" value={progress} />
+              </Box>
+            </VStack>
             <Accordion index={[index]}>
               {sections.map((section, sectionIndex) => (
                 <AccordionItem key={section.name}>

@@ -37,6 +37,10 @@ const App = () => {
       onSuccess: (data: any) => {
         const newUser = data?.data;
 
+        if (data.isAxiosError && user?.username) {
+          return signout();
+        }
+
         if (newUser?.username) {
           signin({ token, user: newUser });
         }

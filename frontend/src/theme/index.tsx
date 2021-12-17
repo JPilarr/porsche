@@ -9,11 +9,12 @@ import Input from "./components/input";
 import Link from "./components/link";
 import Modal from "./components/modal";
 import NumberInput from "./components/numberInput";
+import Progress from "./components/progress";
 import Radio from "./components/radio";
 import Select from "./components/select";
-import Text from "./components/text";
 import Table from "./components/table";
 import Tag from "./components/tag";
+import Text from "./components/text";
 import fonts from "./fonts";
 import fontSizes from "./fontSizes";
 
@@ -37,6 +38,7 @@ const components = {
   Select,
   Table,
   Tag,
+  Progress,
   Text,
 };
 

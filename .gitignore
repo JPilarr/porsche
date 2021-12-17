@@ -16,6 +16,7 @@ dist
 .idea
 build/
 backend/.env*
+backend/docs*
 .cache*
 .serverless
 .serverless_nextjs
@@ -307,5 +308,4 @@ porsche_backend/media/
 
 !.envs/.local/
 
-backend/docs/_build/html/.doctrees/environment.pickle
 

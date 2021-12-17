@@ -1,7 +1,6 @@
 import { Box, Button, HStack, Text, VStack } from "@chakra-ui/react";
 import useFormStore from "hooks/useFormStore";
 import { FormSection, FormSubsection } from "interfaces";
-import { sections } from "mock";
 import { FC } from "react";
 import { Subsection } from "./Subsection";
 
