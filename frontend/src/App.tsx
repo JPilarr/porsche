@@ -5,7 +5,6 @@ import { RequireAuth } from "components/RequireAuth";
 import { useRequest } from "hooks/useRequest";
 import { HomePage } from "pages";
 import { InitialPage } from "pages/initial";
-import { InquiriesPage } from "pages/inquiries";
 import { InvitePage } from "pages/invite";
 import { LoginPage } from "pages/login";
 import { QuestionnairePage } from "pages/questionnaire";
@@ -57,7 +56,6 @@ const App = () => {
           <Route element={<RequireAuth />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/invite" element={<InvitePage />} />
-            <Route path="/inquiries" element={<InquiriesPage />} />
             <Route path="/questionnaire" element={<QuestionnairePage />} />
             <Route path="/initial" element={<InitialPage />} />
           </Route>

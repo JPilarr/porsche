@@ -210,13 +210,6 @@ export const LeftNavbar = () => {
                 >
                   Invite user
                 </NavigationLinkMobile>
-                <NavigationLinkMobile
-                  icon={<IconForm />}
-                  to="/inquiries"
-                  onClick={onDrawerClose}
-                >
-                  Inquiries
-                </NavigationLinkMobile>
 
                 <Icon
                   as={IconLogOut}
@@ -254,13 +247,6 @@ export const LeftNavbar = () => {
               onClick={onDrawerClose}
             >
               Invite user
-            </NavigationLink>
-            <NavigationLink
-              icon={<IconForm />}
-              to="/inquiries"
-              onClick={onDrawerClose}
-            >
-              Inquiries
             </NavigationLink>
           </Flex>
           <Flex direction="column" align="center" justify="center" w="100%">
