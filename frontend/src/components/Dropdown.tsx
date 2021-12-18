@@ -24,6 +24,8 @@ type OptionType = {
 interface DropdownTypes {
   options: OptionType[];
   placeholder: string;
+  onChange?: (data: any) => void;
+  value?: any;
 }
 
 export const Dropdown: FC<DropdownTypes> = (props) => {
@@ -34,8 +36,10 @@ export const Dropdown: FC<DropdownTypes> = (props) => {
         DropdownIndicator,
         IndicatorSeparator: null,
       }}
+      onChange={props.onChange}
       placeholder={props.placeholder}
       selectedOptionColor="blue"
+      value={props.value}
     />
   );
 };

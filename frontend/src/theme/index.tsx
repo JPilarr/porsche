@@ -17,6 +17,7 @@ import Tag from "./components/tag";
 import Text from "./components/text";
 import fonts from "./fonts";
 import fontSizes from "./fontSizes";
+import textStyles from "./textStyles";
 
 const styles = {
   global: {
@@ -43,7 +44,7 @@ const components = {
 };
 
 const theme = {
-  ...extendTheme({ components, colors, fonts, styles, fontSizes }),
+  ...extendTheme({ components, colors, fonts, styles, fontSizes, textStyles }),
 };
 
 export default theme;

@@ -10,7 +10,10 @@ import Calendar from "react-calendar";
 import { ReactComponent as IconCalendar } from "static/icons/calendar.svg";
 import { format } from "date-fns";
 
-export const DatePicker: FC<{ placeholder?: string }> = ({ placeholder }) => {
+export const DatePicker: FC<{
+  placeholder?: string;
+  onChangeValue?: (val: any) => void;
+}> = ({ placeholder, onChangeValue = () => {} }) => {
   const [value, onChange] = useState<Date>();
   const [calendarVisible, setCalendarVisible] = useState(false);
   const wrapperRef = useRef(null);
@@ -43,6 +46,7 @@ export const DatePicker: FC<{ placeholder?: string }> = ({ placeholder }) => {
   const handleChangeValue = (val: Date | undefined) => {
     if (val) {
       onChange(val);
+      onChangeValue(val);
       setCalendarVisible(false);
     }
   };
