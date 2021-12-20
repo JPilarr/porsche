@@ -38,7 +38,7 @@ class Section(BaseModel):
                             q_naire = self.q_naire
                             ).order_by("-index").first().index + 1
         
-        super(Question, self).save(*args, **kwargs)
+        super(Section, self).save(*args, **kwargs)
     class Meta:
         unique_together = ("q_naire","index" )
 
@@ -57,7 +57,7 @@ class SubSection(BaseModel):
                             section =self.section
                             ).order_by("-index").first().index + 1
         
-        super(Question, self).save(*args, **kwargs)
+        super(SubSection, self).save(*args, **kwargs)
     class Meta:
             unique_together = ("section","index" )
 
