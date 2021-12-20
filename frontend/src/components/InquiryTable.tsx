@@ -26,6 +26,7 @@ import React from "react";
 import { ReactComponent as IconDots } from "static/icons/dots.svg";
 import { ReactComponent as IconDownload } from "static/icons/download.svg";
 import { ReactComponent as IconEdit } from "static/icons/list_edit.svg";
+import { Link as RouteLink } from "react-router-dom";
 
 const InquiryTableItem: React.FC<{ inquiry: InquiryItem }> = ({ inquiry }) => {
   return (
@@ -81,7 +82,11 @@ const InquiryTableItem: React.FC<{ inquiry: InquiryItem }> = ({ inquiry }) => {
             px={4}
           >
             <MenuGroup>
-              <MenuItem borderRadius="8px" py={3} px={4}>
+              <MenuItem
+                borderRadius="8px" py={3} px={4}
+                as={RouteLink}
+                to="/review"
+              >
                 <HStack spacing={2} alignItems="center">
                   <Icon
                     color="font.lightGray"

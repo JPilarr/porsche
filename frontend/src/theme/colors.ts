@@ -26,13 +26,17 @@ const colors = {
   background: {
     light: "#FFFFFF",
     lightGray: "#FAFAFA",
+    lightSnow: "#E3F2F9",
     blue: "#F1F7FF",
+    lightBlue: "#F5F9FF",
     gray: "#EFEFEF",
   },
   success: "#35D692",
   font: {
     black: "#42403D",
+    lightBlack: "#B6B6B6",
     gray: "#ACB5BD",
+    darkGray: "#444444",
     lightGray: "#868686",
     gray3: "#CACACA",
     title: "#000000",

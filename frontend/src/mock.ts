@@ -32,6 +32,22 @@ export const inquiries = [
   },
 ];
 
+export const questionSections = [
+  {
+    title: "Process",
+    index: 1,
+  },
+  {
+    title: "Inputs",
+    index: 2,
+  },
+  {
+    title: "Outputs",
+    index: 3,
+  },
+
+]
+
 export const questions = [
   {
     title: "Number question",
@@ -39,6 +55,8 @@ export const questions = [
     field_type: "number",
     extra_fields: "",
     placeholder: "Number question placeholder",
+    answer: "Some answer for question",
+    sectionIndex: 1,
     helper_text: "help",
   },
 
@@ -48,6 +66,8 @@ export const questions = [
     field_type: "text",
     extra_fields: "",
     placeholder: "Text question placeholder",
+    answer: "Some answer for question",
+    sectionIndex: 1,
     helper_text: "help",
   },
   {
@@ -56,6 +76,8 @@ export const questions = [
     field_type: "dropdown",
     extra_fields: "test1, test2, test3",
     placeholder: "Dropdown question placeholder",
+    answer: "Some answer for question",
+    sectionIndex: 2,
     helper_text: "help",
   },
   {
@@ -64,6 +86,8 @@ export const questions = [
     field_type: "checkbox",
     extra_fields: "test1, test2, test3",
     placeholder: "Checkbox question placeholder",
+    answer: "Some answer for question",
+    sectionIndex: 2,
     helper_text: "help",
   },
   {
@@ -72,6 +96,8 @@ export const questions = [
     field_type: "date",
     extra_fields: "",
     placeholder: "Date question placeholder",
+    answer: "Some answer for question",
+    sectionIndex: 3,
     helper_text: "help",
   },
   {
@@ -80,6 +106,8 @@ export const questions = [
     field_type: "radio",
     extra_fields: "test1, test2, test3",
     placeholder: "Radio question placeholder",
+    answer: "Some answer for question",
+    sectionIndex: 3,
     helper_text: "help",
   },
 ];
