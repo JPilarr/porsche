@@ -1,13 +1,14 @@
 from rest_framework import viewsets, filters, pagination
 from rest_framework import permissions
 from rest_framework.generics import ListAPIView
-from .serializers import PendingQuestionsSerializer, AnswerSerializer
+from .serializers import (PendingQuestionsSerializer, AnswerSerializer,
+                        QNaireSerializer)
 from porsche_backend.questions.models import QNaire, SubSection, Research, Section, Answer
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 
 from porsche_backend.utils.models import CreateReadModelViewSet
-
+from porsche_backend.utils.permissions import IsAdminOrReadOnly
 
 class PendingQuestionsSerializerView(ListAPIView):
     serializer_class = PendingQuestionsSerializer
@@ -26,6 +27,10 @@ class PendingQuestionsSerializerView(ListAPIView):
          context = {'request':request})
         return Response({"results":serializer.data})
 
+class QNaireSerializerView(ListAPIView):
+    serializer_class = QNaireSerializer
+    queryset = QNaire.objects.all()
+    permission_classes = (IsAdminOrReadOnly,)
 
 class AnswerViewSet(CreateReadModelViewSet):
     queryset = Answer.objects.all()

@@ -6,7 +6,8 @@ from .base import env
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["api.daato.io"])
+ALLOWED_HOSTS = ["api.daato.io", "app.daato.io", "www.api.daato.io", "www.app.daato.io",
+"https://app.daato.io", "https://api.daato.io"]
 
 # DATABASES
 # ------------------------------------------------------------------------------
@@ -155,12 +156,10 @@ AWS_DEFAULT_ACL = 'public-read'
 AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 PUBLIC_MEDIA_LOCATION = 'media'
-STATIC_FILES_LOCATION = 'static'
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=664800',
 }
 
 DEFAULT_FILE_STORAGE = 'porsche_backend.custom_storages.MediaStorage'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_FILES_LOCATION}/'
-STATICFILES_STORAGE = 'porsche_backend.custom_storages.StaticStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
