@@ -8,6 +8,9 @@ import { InitialPage } from "pages/initial";
 import { InvitePage } from "pages/invite";
 import { LoginPage } from "pages/login";
 import { QuestionnairePage } from "pages/questionnaire";
+import Review from 'pages/Review';
+import ReviewApprove from 'pages/Review/ReviewApprove';
+import ReviewDone from 'pages/Review/ReviewDone';
 import { SignUpPage } from "pages/sign-up";
 import { useEffect } from "react";
 import { useQuery } from "react-query";
@@ -62,6 +65,9 @@ const App = () => {
             <Route path="/invite" element={<InvitePage />} />
             <Route path="/questionnaire" element={<QuestionnairePage />} />
             <Route path="/initial" element={<InitialPage />} />
+            <Route path="/review" element={<Review />} />
+            <Route path="/review/approve" element={<ReviewApprove />} />
+            <Route path="/review/done" element={<ReviewDone />} />
           </Route>
 
           <Route element={<PublicPage />}>

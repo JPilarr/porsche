@@ -40,7 +40,7 @@ export interface FormSection {
 export interface FormSubsection {
   id: number;
   section: number;
-  status: boolean;
+  completed: boolean;
   updated_at: Date;
   created_at: Date;
   name: string;
@@ -66,6 +66,26 @@ export interface FormQuestion {
   helper_text: string;
   placeholder: string;
   image_required: boolean;
+  updated_at: Date;
+  created_at: Date;
+}
+
+export interface FormAnswer {
+  id: number;
+  title: string;
+  question: FormQuestion;
+  field_type: string;
+  user: UserProfile;
+  answer_text: string;
+  attached_file: string;
+  updated_at: Date;
+  created_at: Date;
+}
+
+export interface Questionnaire {
+  id: number;
+  name: string;
+  title: string;
   updated_at: Date;
   created_at: Date;
 }
