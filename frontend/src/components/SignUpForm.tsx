@@ -14,7 +14,7 @@ import {
   useToast,
   VStack,
 } from "@chakra-ui/react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { CredentialsForm } from "components/CredentialsForm";
 import { SignUpFormInput } from "interfaces";
 import { useState } from "react";
@@ -49,6 +49,16 @@ export const SignUpForm = () => {
         });
 
         navigate("/login");
+      },
+      onError: (error: AxiosError) => {
+        toast({
+          title: "Error during signup",
+          description: error?.response?.data?.username ?? error?.message,
+          status: "error",
+          position: "top",
+          duration: 9000,
+          isClosable: true,
+        });
       },
     }
   );
@@ -85,7 +95,7 @@ export const SignUpForm = () => {
               })}
               maxLength={50}
               placeholder="Name of company"
-              autocomplete="company"
+              autoComplete="company"
             />
             <FormErrorMessage textColor="red.error">
               {errors.company?.message}
@@ -111,7 +121,7 @@ export const SignUpForm = () => {
               id="country"
               maxLength={50}
               placeholder="Country"
-              autocomplete="off"
+              autoComplete="off"
               {...register("country", {
                 required: "country is required.",
                 maxLength: 50,
@@ -160,7 +170,7 @@ export const SignUpForm = () => {
                   message: "invalid email address",
                 },
               })}
-              autocomplete="email"
+              autoComplete="email"
               placeholder="Your email"
             />
             <FormErrorMessage textColor="red.error">
@@ -174,10 +184,14 @@ export const SignUpForm = () => {
                 id="password"
                 {...register("password", {
                   required: "Password is required.",
-                  minLength: 6,
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 6 characters",
+                  },
                 })}
                 type={show ? "text" : "password"}
                 placeholder="Your password"
+                autoComplete="new-password"
               />
               <InputRightElement
                 onClick={handlePasswordIconClick}
@@ -203,7 +217,7 @@ export const SignUpForm = () => {
                   message: "invalid phone number",
                 },
               })}
-              autocomplete="tel"
+              autoComplete="tel"
               placeholder="Your Phone number"
             />
             <FormErrorMessage textColor="red.error">
