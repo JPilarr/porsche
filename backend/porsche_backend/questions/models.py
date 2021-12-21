@@ -1,12 +1,8 @@
 from django.db import models
 from porsche_backend.users.models import User
 from ckeditor.fields import RichTextField
+from porsche_backend.utils.models import BaseModel
 
-class BaseModel(models.Model):
-    created_at = models.DateTimeField(auto_now_add= True)
-    updated_at = models.DateTimeField(auto_now= True)
-    class Meta:
-        abstract = True
 
 class QNaire(BaseModel):
     name = models.CharField(max_length=255)
@@ -73,18 +69,19 @@ class Question(BaseModel):
     title = models.TextField()
     sub_section = models.ForeignKey(SubSection, on_delete=models.CASCADE)
     extra_fields = models.TextField(null= True, blank = True)
-    field_type = models.CharField(max_length=255, choices = QUESTION_TYPES, 
+    field_type = models.CharField(max_length=255, choices = QUESTION_TYPES,
                 default = "text")
     index = models.IntegerField(default = 0)
     image_required = models.BooleanField(default = False)
     helper_text = RichTextField(null = True , blank = True)
     def save(self, *args, **kwargs):
-        if not self.index and Question.objects.filter(sub_section = self.sub_section
-                            ).count():
-            self.index = Question.objects.filter(
-                            sub_section =self.sub_section
-                            ).order_by("-index").first().index + 1
-        
+
+        if not self.index:
+            if SubSection.objects.filter(name = self.sub_section.name).count:
+                self.index = SubSection.objects.filter(name = self.sub_section.name).last().index + 1
+            else:
+                self.index = SubSection.objects.filter(name = self.sub_section.name).count() + 1
+
         super(Question, self).save(*args, **kwargs)
     def __str__(self):
         return f"{self.title}-{self.sub_section.name}"

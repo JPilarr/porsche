@@ -80,6 +80,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "porsche_backend.users",
+    "porsche_backend.invitations",
     "porsche_backend.questions",
 
     # Your stuff: custom apps go here
