@@ -3,6 +3,8 @@ from config import celery_app
 
 
 @celery_app.task()
-def send_invitation():
+def send_invitation(invite_data):
     """A pointless Celery task to demonstrate usage."""
-    return User.objects.count()
+    # fill email by instance data
+    print("Invitation data>",invite_data)
+
