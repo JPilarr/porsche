@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404
 
 from porsche_backend.utils.models import CreateReadModelViewSet
 from porsche_backend.utils.permissions import IsAdminOrReadOnly
+from rest_framework import status
 
 class PendingQuestionsSerializerView(ListAPIView):
     serializer_class = PendingQuestionsSerializer
@@ -47,3 +48,16 @@ class AnswerViewSet(CreateReadModelViewSet):
         answer = get_object_or_404(queryset, pk=pk)
         serializer = AnswerSerializer(answer)
         return Response(serializer.data)
+        
+    def create(self, request, *args, **kwargs):
+        data = request.data.get('answers', request.data)
+        many = isinstance(data, list)
+        serializer = self.get_serializer(data=data, many=many)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(
+                serializer.data,
+                status=status.HTTP_201_CREATED,
+                headers=headers
+        )
